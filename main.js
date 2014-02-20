@@ -82,7 +82,7 @@ define(function (require, exports, module) {
 
         var nDocumentsAlive = DocumentManager.getAllOpenDocuments().length;
 
-        console.log("Files in index:", indexSize);
+        console.log("Entries in index:", indexSize);
         console.log("Files under node_modules:", nodeModulesFiles);
         console.log("Files with content cached:", numCachedFiles);
         console.log("Total File cached content (B):", fileCacheBytes);

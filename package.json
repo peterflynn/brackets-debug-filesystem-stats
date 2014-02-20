@@ -1,7 +1,7 @@
 {
     "name": "pflynn.debug.filesystem.stats",
     "title": "FileSystem Stats",
-    "homepage": "https://github.com/peterflynn/brackets-filesystem-stats",
+    "homepage": "https://github.com/peterflynn/brackets-debug-filesystem-stats",
     "author": "Peter Flynn",
     "version": "0.1.0",
     "engines": { "brackets": ">=0.36" },
