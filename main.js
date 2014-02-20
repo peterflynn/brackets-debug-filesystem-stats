@@ -52,7 +52,8 @@ define(function (require, exports, module) {
             numCachedDirs = 0,
             numCachedStats = 0,
             fileCacheBytes = 0,
-            nodeModulesFiles = 0;
+            nodeModulesFiles = 0,
+            unwatchedEntries = 0;
         
         index.visitAll(function (entry, path) {
             if (entry._stat) {
@@ -78,6 +79,10 @@ define(function (require, exports, module) {
             if (entry.fullPath.indexOf(".git") !== -1) {
                 console.warn("Suspicious FS entry " + entry);
             }
+            if (!fs._findWatchedRootForPath(entry.fullPath)) {
+                unwatchedEntries++;
+//                console.warn("Entry outside any watch root " + entry);
+            }
         });
 
         var nDocumentsAlive = DocumentManager.getAllOpenDocuments().length;
@@ -88,6 +93,8 @@ define(function (require, exports, module) {
         console.log("Total File cached content (B):", fileCacheBytes);
         console.log("Dirs with content cached:", numCachedDirs);
         console.log("Documents kept alive:", nDocumentsAlive);
+        console.log("Watch roots:", Object.keys(fs._watchedRoots));
+        console.log("Entries outside watch roots:", unwatchedEntries);
         console.log("=================================================");
     }
     
